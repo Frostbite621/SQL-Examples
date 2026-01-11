@@ -1,0 +1,49 @@
+--
+--
+--
+
+SELECT c1.courseid, c1.courseshortname, prereq.prerequisiteid, c2.courseshortname
+FROM course c1
+join prerequisite prereq on prereq.courseid = c1.courseid
+join course c2 on c2.courseid = prereq.prerequisiteid
+ORDER BY c1.courseid ASC;
+
+--
+--
+--
+
+SELECT c1.courseid, c1.courseshortname, COUNT(prereq.prerequisiteid) "Number of Prerequisites"
+FROM course c1
+join prerequisite prereq on prereq.courseid = c1.courseid
+join course c2 on c2.courseid = prereq.prerequisiteid
+GROUP BY c1.courseid, c1.courseshortname
+HAVING COUNT(prereq.prerequisiteid) >= 3;
+
+--
+--
+--
+
+SELECT e2.ename, e1.ename
+FROM employee e1
+join employee e2 on e1.supervisorid = e2.employeeid
+ORDER BY e2.ename;
+
+--
+--
+--
+
+SELECT e2.ename as "Supervisor", COUNT(e2.employeeid) "Number of Employees"
+FROM employee e1
+join employee e2 on e1.supervisorid = e2.employeeid
+GROUP BY e2.ename
+HAVING COUNT(e2.employeeid) > 5
+ORDER BY COUNT(e2.employeeid) desc, e2.ename ASC;
+
+--
+--
+--
+
+SELECT e2.ename as "Executive"
+FROM employee e1
+join employee e2 on e1.supervisorid = e2.employeeid
+WHERE e1.ename = e2.ename;
