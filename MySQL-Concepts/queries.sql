@@ -1,3 +1,8 @@
+--Demonstrate knowledge of queries
+--Utilize joins 
+--Demonstrate knowledge of group by and having with aggregates
+
+
 SELECT c1.courseid, c1.courseshortname, prereq.prerequisiteid, c2.courseshortname
 FROM course c1
 join prerequisite prereq on prereq.courseid = c1.courseid
