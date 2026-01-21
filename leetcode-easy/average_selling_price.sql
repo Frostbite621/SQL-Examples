@@ -1,4 +1,5 @@
---find the average selling price of products
+-- Uses LEFT JOIN to include products with no sales
+-- COALESCE ensures zero is returned instead of NULL
 
 SELECT p.product_id, ROUND(COALESCE(SUM(p.price * us.units) / SUM(us.units), 0),2) as "average_price"
 FROM prices p
