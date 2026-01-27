@@ -18,9 +18,9 @@ The project is built around a normalized PostgreSQL schema representing customer
 - Relational schema design
 - Synthetic data generation
 - Project structure and documentation setup
+- Implemented an end-to-end ETL pipeline to load a flat dataset into a normalized PostgreSQL schema with full validation and reconciliation checks
 
 **Upcoming:**
-- ETL process to load flat data into relational tables
-- Data validation and integrity checks
 - Analytical SQL queries
+
 - Tableau dashboard development
