@@ -21,6 +21,7 @@ The project is built around a normalized PostgreSQL schema representing customer
 - Developed analytical SQL queries to evaluate revenue trends, order volume, and average order value, and produced a consolidated monthly dataset for visualization
 - ETL process to load flat data into relational tables
 - Data validation and integrity checks
+- Modeled returns and calculated net revenue and return rate to reflect real-world operational performance
 
 **Upcoming:**
 - Tableau dashboard development

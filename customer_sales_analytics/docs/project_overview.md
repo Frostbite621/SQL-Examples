@@ -30,9 +30,9 @@ The data used in this project is synthetically generated to simulate realistic t
 - Relational schema design
 - Synthetic data generation
 - Project structure and documentation setup
-
-**In Progress / Upcoming:**
-- ETL process to load flat data into relational tables
+-  ETL process to load flat data into relational tables
 - Data validation and integrity checks
 - Business-driven analytical SQL queries
+
+**In Progress / Upcoming:**
 - Tableau dashboard development

@@ -45,3 +45,70 @@ SELECT
     average_order_value
 FROM monthly_metrics
 ORDER BY order_month;
+
+--Simulate 10% of orders being returned
+INSERT INTO returns(order_id, return_date, return_amount)
+SELECT
+    o.order_id,
+    o.order_date + INTERVAL '7 days' AS return_date,
+    ROUND(o.order_total * (0.2 + RANDOM() * 0.6)::NUMERIC, 2 ) AS return_amount
+FROM orders o
+WHERE RANDOM() < 0.10;
+
+
+-- =========================
+-- Net Revenue (Overall)
+-- =========================
+
+SELECT SUM(o.order_total) AS gross_revenue,
+ SUM(COALESCE(r.return_amount, 0)) AS total_returns,
+ SUM(o.order_total - COALESCE(r.return_amount,0)) AS net_revenue
+FROM orders o
+LEFT JOIN returns r on o.order_id = r.order_id;
+
+
+-- =========================
+-- Return Rates (Overall)
+-- =========================
+
+SELECT
+    COUNT(DISTINCT r.order_id) as returned_orders,
+    COUNT(DISTINCT o.order_id) as total_orders,
+    ROUND(
+    COUNT(DISTINCT r.order_id)::NUMERIC / COUNT(DISTINCT  o.order_id) * 100, 2) as order_return_rate_pct
+    FROM orders o
+LEFT JOIN returns r on o.order_id = r.order_id;
+
+--Revenue return rate
+SELECT
+    ROUND(
+    SUM(COALESCE(r.return_amount,0))
+/ SUM(o.order_total) * 100,2) as revenue_return_rate_pct
+FROM orders o
+LEFT JOIN returns r on o.order_id = r.order_id;
+
+
+-- =========================
+-- Monthly Net Performance Metrics
+-- =========================
+
+WITH monthly_net AS (
+    SELECT
+        DATE_TRUNC('month', o.order_date)::DATE AS order_month,
+        COUNT(DISTINCT o.order_id) as total_orders,
+        SUM(o.order_total) as gross_revenue,
+        SUM(COALESCE(r.return_amount, 0)) as total_returns,
+    SUM(o.order_total - COALESCE(r.return_amount,0)) as net_revenue
+FROM orders o
+LEFT JOIN returns r on o.order_id = r.order_id
+GROUP BY order_month
+    )
+SELECT
+    order_month,
+    total_orders,
+    gross_revenue,
+    total_returns,
+    net_revenue,
+    ROUND(total_returns / gross_revenue * 100,2) AS revenue_return_rate_pct
+FROM monthly_net
+ORDER BY order_month;
