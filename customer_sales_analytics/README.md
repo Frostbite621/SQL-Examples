@@ -16,8 +16,6 @@ The project is built around a normalized PostgreSQL schema representing customer
 
 ## Project Status
 
-🚧 In Progress
-
 **Completed:**
 
 * Relational schema design
@@ -40,6 +38,7 @@ Created a Tableau dashboard to analyze monthly gross vs net revenue, order volum
 
 
 ![Monthly Revenue & Returns Dashboard](Visuals/monthly_revenue_returns_dashboard.png)
+
 
 
 
