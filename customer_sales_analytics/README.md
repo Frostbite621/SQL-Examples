@@ -39,7 +39,8 @@ Created a Tableau dashboard to analyze monthly gross vs net revenue, order volum
 
 
 
-=[Monthly Revenue \& Returns Dashboard](visuals/monthly\_revenue\_returns\_dashboard.png)
+=[Monthly Revenue \& Returns Dashboard](customer_sales_analytics/Visuals/monthly_revenue_returns_dashboard.png)
+
 
 
 
