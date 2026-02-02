@@ -31,7 +31,7 @@ The project is built around a normalized PostgreSQL schema representing customer
 
 
 
-\## Visualization
+## Visualization
 
 
 
@@ -40,6 +40,7 @@ Created a Tableau dashboard to analyze monthly gross vs net revenue, order volum
 
 
 !\[Monthly Revenue \& Returns Dashboard](visuals/monthly\_revenue\_returns\_dashboard.png)
+
 
 
 
