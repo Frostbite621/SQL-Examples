@@ -1,3 +1,0 @@
----Wireless mouse is in danger of selling out because our total sold is approaching out stock quantity
----Inventory levels may not be aligned with the sales velocity on our top products
----With more data I would include supplier lead time to improve the inventory risk modeling
